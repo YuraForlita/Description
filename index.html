@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Макет Опису Товару (Без JS)</title>
+    <!-- Підключення Tailwind CSS CDN для утилітних класів -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Встановлення шрифту Inter для кращої типографіки */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        /* Загальний клас для контейнера, щоб симулювати ширину опису товару */
+        .description-container {
+            max-width: 1200px;
+        }
+
+        /* ======================================================= */
+        /* CSS-ХАК ДЛЯ АКОРДЕОНА (БЛОКИ 5 та 6) БЕЗ JS */
+        /* ======================================================= */
+        
+        /* Приховуємо реальний чекбокс/радіо-кнопку */
+        .accordion-toggle {
+            display: none;
+        }
+
+        /* Контейнер для вмісту, який буде з'являтися */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        /* Коли чекбокс позначено, показуємо вміст */
+        .accordion-toggle:checked ~ .accordion-content {
+            max-height: 500px; /* Достатньо велике значення для вмісту */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Стиль для іконки-стрілки */
+        .accordion-toggle:checked ~ .accordion-header .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Стиль для верхнього заголовка акордеона */
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* При зміні стану, змінюємо border-radius */
+        .accordion-toggle:checked ~ .accordion-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        /* ======================================================= */
+        /* CSS ДЛЯ БЛОКУ 6: Галерея Високої Роздільної Здатності */
+        /* ======================================================= */
+        .gallery-image-container {
+            min-height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1rem;
+            position: relative;
+        }
+        /* Встановлення фонового зображення */
+        .gallery-image-container {
+            background-image: url('https://placehold.co/1200x800/27497d/ffffff?text=Product+High+Resolution+Shot');
+        }
+
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="description-container mx-auto space-y-16">
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 1: Текст, Фото, Накладений Текст (product-block-a) -->
+        <!-- ======================================================= -->
+        <section id="product-block-a" class="bg-white p-6 shadow-xl rounded-2xl border border-gray-100">
+            <h2 class="text-3xl font-extrabold text-center mb-6 text-gray-900">
+                Максимум Деталей у Кожному Пікселі
+            </h2>
+            <div class="relative w-full h-auto overflow-hidden rounded-xl shadow-lg">
+                <!-- Зображення під текстом -->
+                <img src="https://placehold.co/1200x500/818cf8/ffffff?text=Product+Hero+Shot" 
+                     alt="[Зображення головного кадру продукту]" 
+                     class="w-full h-full object-cover">
+                
+                <!-- Накладений текст (absolute) -->
+                <div class="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 bg-black/60 p-3 sm:p-4 rounded-lg">
+                    <p class="text-xl sm:text-3xl font-bold text-white tracking-wider">
+                        Надзвичайна <span class="text-yellow-300">Яскравість</span>
+                    </p>
+                    <p class="text-sm text-gray-300 mt-1">
+                        Інноваційна технологія покриття для глибоких кольорів.
+                    </p>
+                </div>
+            </div>
+            <p class="mt-4 text-center text-gray-600 italic">
+                Це зображення ілюструє якість матеріалів, використаних у виробництві.
+            </p>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 2: ОНОВЛЕНО: 2 Бічні Колони по 25%, Пустота Посередині (product-block-b) -->
+        <!-- ======================================================= -->
+        <section id="product-block-b" class="bg-gray-800 p-6 shadow-xl rounded-2xl text-white">
+            <div class="relative w-full min-h-[550px] overflow-hidden rounded-xl shadow-2xl">
+                <!-- Фон-зображення -->
+                <img src="https://placehold.co/1200x600/1f2937/9ca3af?text=Product+Details+Environment" 
+                     alt="[Зображення середовища деталей продукту]" 
+                     class="w-full h-full object-cover opacity-30 absolute inset-0">
+
+                <!-- Контейнер для вмісту поверх зображення -->
+                <div class="relative p-4 sm:p-8 flex flex-col items-center justify-start">
+                    
+                    <!-- Заголовок поверх фото -->
+                    <h2 class="text-4xl font-black text-center mb-10 mt-4 tracking-tight">
+                        Експертні Функції та Характеристики
+                    </h2>
+
+                    <!-- Головний контейнер з колонками: 4x Grid, де 2 і 3 колонка пусті на десктопі -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 w-full max-w-6xl mt-6">
+                        
+                        <!-- ЛІВА КОЛОНКА (25% ширини) -->
+                        <div class="col-span-1 flex flex-col space-y-8">
+                            <!-- Пункт 1 -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2">
+                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <p class="text-xl font-semibold">Надшвидка Активація</p>
+                                <p class="text-gray-300 text-sm">Система готова до роботи менш ніж за 5 секунд, що дозволяє миттєво розпочати роботу.</p>
+                            </div>
+                            <!-- Пункт 2 -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2">
+                                <svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.995 8.995 0 0112 21c-2.457 0-4.757-.79-6.618-2.146M15.5 5A8.995 8.995 0 0012 3C9.543 3 7.243 3.79 5.382 5.146M4 12H1v6a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-6h-3"></path></svg>
+                                <p class="text-xl font-semibold">Адаптивний Дизайн</p>
+                                <p class="text-gray-300 text-sm">Бездоганний вигляд на будь-якому екрані, від смартфона до великого монітора.</p>
+                            </div>
+                        </div>
+
+                        <!-- Дві порожні колонки (на lg екранах) - Центр. На мобільних цей простір займеться елементами -->
+                        <div class="lg:col-span-2 hidden lg:block">
+                            <!-- Тут буде видно фонове зображення -->
+                        </div>
+
+                        <!-- ПРАВА КОЛОНКА (25% ширини) -->
+                        <div class="col-span-1 flex flex-col space-y-8">
+                            <!-- Пункт 3 (На мобільних він піде під Пункт 2) -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2">
+                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                <p class="text-xl font-semibold">Енергоефективність</p>
+                                <p class="text-gray-300 text-sm">Зменшення споживання енергії до 40% завдяки оптимізованим мікросхемам.</p>
+                            </div>
+                            <!-- Пункт 4 -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2">
+                                <svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                <p class="text-xl font-semibold">Безшумна Робота</p>
+                                <p class="text-gray-300 text-sm">Інноваційна система пасивного охолодження гарантує відсутність шуму.</p>
+                            </div>
+                        </div>
+
+                        <!-- Додаткові пункти для мобільних (вони займуть 2x2 сітку на мобільних) -->
+                        <div class="col-span-2 lg:col-span-1 lg:hidden">
+                             <!-- Пункт 5 (ЛІВА) -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0">
+                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 000-4zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <p class="text-xl font-semibold">Цілодобова Підтримка</p>
+                                <p class="text-gray-300 text-sm">Миттєвий доступ до експертів 24/7/365.</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 lg:col-span-1 lg:hidden">
+                            <!-- Пункт 6 (ПРАВА) -->
+                            <div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0">
+                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3a8 8 0 00-7.237 4.774M21 12c0 1.372-.638 2.87-1.898 4.025M12 21a9 9 0 010-18m0 18a9 9 0 000-18m0 18a9 9 0 01-9-9m9 9a9 9 0 01-9-9m9 9h3a8 8 0 007.237-4.774M12 3c-1.372 0-2.87.638-4.025 1.898"></path></svg>
+                                <p class="text-xl font-semibold">Глобальна Сумісність</p>
+                                <p class="text-gray-300 text-sm">Повна інтеграція та сумісність з усіма стандартами.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 3: Текст, 3-4 Вертикальних Зображення з Текстом Поверх (product-block-c) -->
+        <!-- ======================================================= -->
+        <section id="product-block-c" class="bg-slate-50 p-6 shadow-xl rounded-2xl border border-slate-100">
+            <h2 class="text-3xl font-extrabold text-center mb-10 text-slate-800">
+                Створюйте Власні Сценарії Використання
+            </h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                
+                <!-- Елемент Зображення 1 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
+                    <img src="https://placehold.co/400x600/22c55e/ffffff?text=Scene+1" 
+                         alt="[Зображення Сцени 1]" 
+                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
+                    
+                    <div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
+                        <p class="text-lg font-semibold text-white">
+                            Етап 1: <span class="text-lime-300">Аналіз</span>
+                        </p>
+                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
+                            Збір та обробка первинних даних.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Елемент Зображення 2 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
+                    <img src="https://placehold.co/400x600/ef4444/ffffff?text=Scene+2" 
+                         alt="[Зображення Сцени 2]" 
+                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
+                    
+                    <div class="absolute inset-x-0 bottom-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
+                        <p class="text-lg font-semibold text-white">
+                            Етап 2: <span class="text-red-300">Виконання</span>
+                        </p>
+                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
+                            Запуск алгоритмів та процесів.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Елемент Зображення 3 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
+                    <img src="https://placehold.co/400x600/3b82f6/ffffff?text=Scene+3" 
+                         alt="[Зображення Сцени 3]" 
+                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
+                    
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
+                        <p class="text-lg font-semibold text-white">
+                            Етап 3: <span class="text-sky-300">Перевірка</span>
+                        </p>
+                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
+                            Контроль якості та валідація результатів.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Елемент Зображення 4 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group sm:col-span-1 hidden lg:block">
+                    <img src="https://placehold.co/400x600/f97316/ffffff?text=Scene+4" 
+                         alt="[Зображення Сцени 4]" 
+                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
+                    
+                    <div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
+                        <p class="text-lg font-semibold text-white">
+                            Етап 4: <span class="text-orange-300">Фінал</span>
+                        </p>
+                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
+                            Експорт та інтеграція готового продукту.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 4: Порівняльна Таблиця/Матриця Особливостей (product-block-d) -->
+        <!-- ======================================================= -->
+        <section id="product-block-d" class="bg-gray-900 p-6 shadow-xl rounded-2xl text-white">
+            <h2 class="text-3xl font-extrabold text-center mb-8 text-white">
+                Порівняння: Наш Продукт vs. Конкуренти
+            </h2>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-700 rounded-xl">
+                    <thead class="bg-gray-800">
+                        <tr>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-400">Характеристика</th>
+                            <th class="py-3 px-4 text-center text-sm font-medium text-purple-400">Наш Продукт</th>
+                            <th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент А</th>
+                            <th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент Б</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <!-- Рядок 1 (Світлий) -->
+                        <tr class="bg-gray-700/50">
+                            <td class="py-4 px-4 font-medium text-gray-200">Матеріал Корпусу</td>
+                            <td class="py-4 px-4 text-center">
+                                <span class="text-green-400 font-bold">Алюміній</span>
+                            </td>
+                            <td class="py-4 px-4 text-center">Пластик</td>
+                            <td class="py-4 px-4 text-center">Композит</td>
+                        </tr>
+                        <!-- Рядок 2 (Темний) -->
+                        <tr class="bg-gray-700">
+                            <td class="py-4 px-4 font-medium text-gray-200">Автономність (годин)</td>
+                            <td class="py-4 px-4 text-center">
+                                <span class="text-purple-400 font-bold">18+</span>
+                            </td>
+                            <td class="py-4 px-4 text-center">12</td>
+                            <td class="py-4 px-4 text-center">15</td>
+                        </tr>
+                        <!-- Рядок 3 (Світлий) -->
+                        <tr class="bg-gray-700/50">
+                            <td class="py-4 px-4 font-medium text-gray-200">Водонепроникність (IP)</td>
+                            <td class="py-4 px-4 text-center">
+                                <svg class="w-6 h-6 mx-auto text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </td>
+                            <td class="py-4 px-4 text-center">
+                                <svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </td>
+                            <td class="py-4 px-4 text-center">
+                                <svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 5: Акордеон з Ключовими Перевагами (CSS-ХАК) (product-block-e) -->
+        <!-- ======================================================= -->
+        <section id="product-block-e" class="bg-indigo-50 p-6 sm:p-8 shadow-2xl rounded-2xl border border-indigo-200">
+            <h2 class="text-3xl font-extrabold text-center mb-8 text-indigo-900">
+                Детальний Розбір Ключових Переваг
+            </h2>
+
+            <div class="space-y-4 max-w-4xl mx-auto">
+
+                <!-- АККОРДЕОН ЕЛЕМЕНТ 1 -->
+                <div class="accordion-item bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+                    <input type="checkbox" id="toggle-1" class="accordion-toggle" hidden>
+                    
+                    <label for="toggle-1" class="accordion-header p-5 flex justify-between items-center text-indigo-800 font-semibold text-xl bg-white hover:bg-indigo-100">
+                        <span>1. Інтелектуальна Система Економії Енергії</span>
+                        <svg class="w-6 h-6 accordion-icon transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    
+                    <div class="accordion-content bg-white/80 px-5 text-gray-700 text-base border-t border-indigo-200">
+                        <p>Наш продукт оснащений AI-алгоритмом, який аналізує ваші звички використання і автоматично регулює потужність, заощаджуючи до 35% електроенергії без втрати продуктивності. Це робить його не тільки ефективним, але й екологічним рішенням.</p>
+                    </div>
+                </div>
+
+                <!-- АККОРДЕОН ЕЛЕМЕНТ 2 -->
+                <div class="accordion-item bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+                    <input type="checkbox" id="toggle-2" class="accordion-toggle" hidden>
+                    
+                    <label for="toggle-2" class="accordion-header p-5 flex justify-between items-center text-indigo-800 font-semibold text-xl bg-white hover:bg-indigo-100">
+                        <span>2. Модульна Архітектура для Легкого Оновлення</span>
+                        <svg class="w-6 h-6 accordion-icon transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    
+                    <div class="accordion-content bg-white/80 px-5 text-gray-700 text-base border-t border-indigo-200">
+                        <p>Ми розробили пристрій так, щоб ключові компоненти можна було замінити протягом 5 хвилин. Забудьте про викидання старого обладнання – просто оновіть потрібний модуль і продовжуйте користуватися найновішими технологіями.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- БЛОК 6: Візуалізація Матеріалів/Кольорів (Material Showcase) (product-block-g) -->
+        <!-- ======================================================= -->
+        <section id="product-block-g" class="bg-black p-6 sm:p-12 shadow-2xl rounded-2xl text-white">
+            <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-100">
+                Оберіть Свій Стиль та Матеріал
+            </h2>
+
+            <!-- Контейнер для Showcase: два великі стовпці з акцентом на зображення -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Колонка 1: Колір "Опівнічне Небо" -->
+                <div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]">
+                    <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Midnight+Sky+Edition" 
+                         alt="[Зображення видання 'Опівнічне Небо']" 
+                         class="w-full h-auto object-cover aspect-video">
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-sky-400 mb-2">Опівнічне Небо (Алюміній)</h3>
+                        <p class="text-gray-400 text-sm">
+                            Елегантний та стриманий темно-синій колір. Корпус з авіаційного алюмінію, анодованого для стійкості до подряпин. Ідеально підходить для професійного середовища.
+                        </p>
+                        <div class="mt-4 flex items-center space-x-2">
+                            <span class="inline-block w-6 h-6 rounded-full bg-slate-800 border-2 border-sky-400"></span>
+                            <span class="text-sm font-medium text-gray-300">В наявності</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: Колір "Сяюче Золото" -->
+                <div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]">
+                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Radiant+Gold+Edition" 
+                         alt="[Зображення видання 'Сяюче Золото']" 
+                         class="w-full h-auto object-cover aspect-video">
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Сяюче Золото (Композит)</h3>
+                        <p class="text-gray-400 text-sm">
+                            Розкішний золотий відтінок, створений з високоміцного полімерного композиту з матовим покриттям. Найкращий вибір для тих, хто цінує сміливість та індивідуальність.
+                        </p>
+                        <div class="mt-4 flex items-center space-x-2">
+                            <span class="inline-block w-6 h-6 rounded-full bg-yellow-600 border-2 border-yellow-300"></span>
+                            <span class="text-sm font-medium text-gray-300">Обмежена серія</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
