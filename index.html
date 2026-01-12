@@ -1,416 +1,189 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Макет Опису Товару (Без JS)</title>
-    <!-- Підключення Tailwind CSS CDN для утилітних класів -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Встановлення шрифту Inter для кращої типографіки */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Описи товарів | Nowe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
         }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-        /* Загальний клас для контейнера, щоб симулювати ширину опису товару */
-        .description-container {
-            max-width: 1200px;
-        }
+    .row-number {
+      font-weight: 700;
+      color: #6366f1;
+    }
 
-        /* ======================================================= */
-        /* CSS-ХАК ДЛЯ АКОРДЕОНА (БЛОКИ 5 та 6) БЕЗ JS */
-        /* ======================================================= */
-        
-        /* Приховуємо реальний чекбокс/радіо-кнопку */
-        .accordion-toggle {
-            display: none;
-        }
-
-        /* Контейнер для вмісту, який буде з'являтися */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        /* Коли чекбокс позначено, показуємо вміст */
-        .accordion-toggle:checked ~ .accordion-content {
-            max-height: 500px; /* Достатньо велике значення для вмісту */
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        /* Стиль для іконки-стрілки */
-        .accordion-toggle:checked ~ .accordion-header .accordion-icon {
-            transform: rotate(180deg);
-        }
-        
-        /* Стиль для верхнього заголовка акордеона */
-        .accordion-header {
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        /* При зміні стану, змінюємо border-radius */
-        .accordion-toggle:checked ~ .accordion-header {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        /* ======================================================= */
-        /* CSS ДЛЯ БЛОКУ 6: Галерея Високої Роздільної Здатності */
-        /* ======================================================= */
-        .gallery-image-container {
-            min-height: 500px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 1rem;
-            position: relative;
-        }
-        /* Встановлення фонового зображення */
-        .gallery-image-container {
-            background-image: url('https://placehold.co/1200x800/27497d/ffffff?text=Product+High+Resolution+Shot');
-        }
-
-    </style>
+    .max-w-7xl-custom {
+      max-width: 90vw;
+    }
+  </style>
 </head>
-<body class="p-4 sm:p-8">
 
-    <div class="description-container mx-auto space-y-16">
+<body class="bg-gray-50 font-sans p-4 md:p-8">
 
-        <!-- ======================================================= -->
-        <!-- БЛОК 1: Текст, Фото, Накладений Текст (product-block-a) -->
-        <!-- ======================================================= -->
-        <section id="product-block-a" class="bg-white p-6 shadow-xl rounded-2xl border border-gray-100">
-            <h2 class="text-3xl font-extrabold text-center mb-6 text-gray-900">
-                Максимум Деталей у Кожному Пікселі
-            </h2>
-            <div class="relative w-full h-auto overflow-hidden rounded-xl shadow-lg">
-                <!-- Зображення під текстом -->
-                <img src="https://placehold.co/1200x500/818cf8/ffffff?text=Product+Hero+Shot" 
-                     alt="[Зображення головного кадру продукту]" 
-                     class="w-full h-full object-cover">
-                
-                <!-- Накладений текст (absolute) -->
-                <div class="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 bg-black/60 p-3 sm:p-4 rounded-lg">
-                    <p class="text-xl sm:text-3xl font-bold text-white tracking-wider">
-                        Надзвичайна <span class="text-yellow-300">Яскравість</span>
-                    </p>
-                    <p class="text-sm text-gray-300 mt-1">
-                        Інноваційна технологія покриття для глибоких кольорів.
-                    </p>
-                </div>
-            </div>
-            <p class="mt-4 text-center text-gray-600 italic">
-                Це зображення ілюструє якість матеріалів, використаних у виробництві.
-            </p>
-        </section>
+  <header class="flex justify-center mb-12">
+    <div class="max-w-[420px] w-full px-4">
+      <svg class="w-full h-auto" viewBox="0 0 1330.25796 412.71153" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <style>
+            .b {
+              fill: #244170;
+            }
 
-        <!-- ======================================================= -->
-        <!-- БЛОК 2: ОНОВЛЕНО: 2 Бічні Колони по 25%, Пустота Посередині (product-block-b) -->
-        <!-- ======================================================= -->
-        <section id="product-block-b" class="bg-gray-800 p-6 shadow-xl rounded-2xl text-white">
-            <div class="relative w-full min-h-[550px] overflow-hidden rounded-xl shadow-2xl">
-                <!-- Фон-зображення -->
-                <img src="https://placehold.co/1200x600/1f2937/9ca3af?text=Product+Details+Environment" 
-                     alt="[Зображення середовища деталей продукту]" 
-                     class="w-full h-full object-cover opacity-30 absolute inset-0">
+            .c {
+              fill: #4db6ff;
+            }
 
-                <!-- Контейнер для вмісту поверх зображення -->
-                <div class="relative p-4 sm:p-8 flex flex-col items-center justify-start">
-                    
-                    <!-- Заголовок поверх фото -->
-                    <h2 class="text-4xl font-black text-center mb-10 mt-4 tracking-tight">
-                        Експертні Функції та Характеристики
-                    </h2>
+            .d {
+              fill: #ff6f5c;
+            }
 
-                    <!-- Головний контейнер з колонками: 4x Grid, де 2 і 3 колонка пусті на десктопі -->
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 w-full max-w-6xl mt-6">
-                        
-                        <!-- ЛІВА КОЛОНКА (25% ширини) -->
-                        <div class="col-span-1 flex flex-col space-y-8">
-                            <!-- Пункт 1 -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2">
-                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <p class="text-xl font-semibold">Надшвидка Активація</p>
-                                <p class="text-gray-300 text-sm">Система готова до роботи менш ніж за 5 секунд, що дозволяє миттєво розпочати роботу.</p>
-                            </div>
-                            <!-- Пункт 2 -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2">
-                                <svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.995 8.995 0 0112 21c-2.457 0-4.757-.79-6.618-2.146M15.5 5A8.995 8.995 0 0012 3C9.543 3 7.243 3.79 5.382 5.146M4 12H1v6a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-6h-3"></path></svg>
-                                <p class="text-xl font-semibold">Адаптивний Дизайн</p>
-                                <p class="text-gray-300 text-sm">Бездоганний вигляд на будь-якому екрані, від смартфона до великого монітора.</p>
-                            </div>
-                        </div>
-
-                        <!-- Дві порожні колонки (на lg екранах) - Центр. На мобільних цей простір займеться елементами -->
-                        <div class="lg:col-span-2 hidden lg:block">
-                            <!-- Тут буде видно фонове зображення -->
-                        </div>
-
-                        <!-- ПРАВА КОЛОНКА (25% ширини) -->
-                        <div class="col-span-1 flex flex-col space-y-8">
-                            <!-- Пункт 3 (На мобільних він піде під Пункт 2) -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2">
-                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                <p class="text-xl font-semibold">Енергоефективність</p>
-                                <p class="text-gray-300 text-sm">Зменшення споживання енергії до 40% завдяки оптимізованим мікросхемам.</p>
-                            </div>
-                            <!-- Пункт 4 -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2">
-                                <svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                <p class="text-xl font-semibold">Безшумна Робота</p>
-                                <p class="text-gray-300 text-sm">Інноваційна система пасивного охолодження гарантує відсутність шуму.</p>
-                            </div>
-                        </div>
-
-                        <!-- Додаткові пункти для мобільних (вони займуть 2x2 сітку на мобільних) -->
-                        <div class="col-span-2 lg:col-span-1 lg:hidden">
-                             <!-- Пункт 5 (ЛІВА) -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0">
-                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 000-4zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <p class="text-xl font-semibold">Цілодобова Підтримка</p>
-                                <p class="text-gray-300 text-sm">Миттєвий доступ до експертів 24/7/365.</p>
-                            </div>
-                        </div>
-                        <div class="col-span-2 lg:col-span-1 lg:hidden">
-                            <!-- Пункт 6 (ПРАВА) -->
-                            <div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0">
-                                <svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3a8 8 0 00-7.237 4.774M21 12c0 1.372-.638 2.87-1.898 4.025M12 21a9 9 0 010-18m0 18a9 9 0 000-18m0 18a9 9 0 01-9-9m9 9a9 9 0 01-9-9m9 9h3a8 8 0 007.237-4.774M12 3c-1.372 0-2.87.638-4.025 1.898"></path></svg>
-                                <p class="text-xl font-semibold">Глобальна Сумісність</p>
-                                <p class="text-gray-300 text-sm">Повна інтеграція та сумісність з усіма стандартами.</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================= -->
-        <!-- БЛОК 3: Текст, 3-4 Вертикальних Зображення з Текстом Поверх (product-block-c) -->
-        <!-- ======================================================= -->
-        <section id="product-block-c" class="bg-slate-50 p-6 shadow-xl rounded-2xl border border-slate-100">
-            <h2 class="text-3xl font-extrabold text-center mb-10 text-slate-800">
-                Створюйте Власні Сценарії Використання
-            </h2>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                
-                <!-- Елемент Зображення 1 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
-                    <img src="https://placehold.co/400x600/22c55e/ffffff?text=Scene+1" 
-                         alt="[Зображення Сцени 1]" 
-                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
-                    
-                    <div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
-                        <p class="text-lg font-semibold text-white">
-                            Етап 1: <span class="text-lime-300">Аналіз</span>
-                        </p>
-                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
-                            Збір та обробка первинних даних.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Елемент Зображення 2 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
-                    <img src="https://placehold.co/400x600/ef4444/ffffff?text=Scene+2" 
-                         alt="[Зображення Сцени 2]" 
-                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
-                    
-                    <div class="absolute inset-x-0 bottom-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
-                        <p class="text-lg font-semibold text-white">
-                            Етап 2: <span class="text-red-300">Виконання</span>
-                        </p>
-                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
-                            Запуск алгоритмів та процесів.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Елемент Зображення 3 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group">
-                    <img src="https://placehold.co/400x600/3b82f6/ffffff?text=Scene+3" 
-                         alt="[Зображення Сцени 3]" 
-                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
-                    
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
-                        <p class="text-lg font-semibold text-white">
-                            Етап 3: <span class="text-sky-300">Перевірка</span>
-                        </p>
-                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
-                            Контроль якості та валідація результатів.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Елемент Зображення 4 -->
-                <div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group sm:col-span-1 hidden lg:block">
-                    <img src="https://placehold.co/400x600/f97316/ffffff?text=Scene+4" 
-                         alt="[Зображення Сцени 4]" 
-                         class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300">
-                    
-                    <div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60">
-                        <p class="text-lg font-semibold text-white">
-                            Етап 4: <span class="text-orange-300">Фінал</span>
-                        </p>
-                        <p class="text-xs text-gray-200 mt-1 hidden sm:block">
-                            Експорт та інтеграція готового продукту.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================= -->
-        <!-- БЛОК 4: Порівняльна Таблиця/Матриця Особливостей (product-block-d) -->
-        <!-- ======================================================= -->
-        <section id="product-block-d" class="bg-gray-900 p-6 shadow-xl rounded-2xl text-white">
-            <h2 class="text-3xl font-extrabold text-center mb-8 text-white">
-                Порівняння: Наш Продукт vs. Конкуренти
-            </h2>
-
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-700 rounded-xl">
-                    <thead class="bg-gray-800">
-                        <tr>
-                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-400">Характеристика</th>
-                            <th class="py-3 px-4 text-center text-sm font-medium text-purple-400">Наш Продукт</th>
-                            <th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент А</th>
-                            <th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент Б</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-700">
-                        <!-- Рядок 1 (Світлий) -->
-                        <tr class="bg-gray-700/50">
-                            <td class="py-4 px-4 font-medium text-gray-200">Матеріал Корпусу</td>
-                            <td class="py-4 px-4 text-center">
-                                <span class="text-green-400 font-bold">Алюміній</span>
-                            </td>
-                            <td class="py-4 px-4 text-center">Пластик</td>
-                            <td class="py-4 px-4 text-center">Композит</td>
-                        </tr>
-                        <!-- Рядок 2 (Темний) -->
-                        <tr class="bg-gray-700">
-                            <td class="py-4 px-4 font-medium text-gray-200">Автономність (годин)</td>
-                            <td class="py-4 px-4 text-center">
-                                <span class="text-purple-400 font-bold">18+</span>
-                            </td>
-                            <td class="py-4 px-4 text-center">12</td>
-                            <td class="py-4 px-4 text-center">15</td>
-                        </tr>
-                        <!-- Рядок 3 (Світлий) -->
-                        <tr class="bg-gray-700/50">
-                            <td class="py-4 px-4 font-medium text-gray-200">Водонепроникність (IP)</td>
-                            <td class="py-4 px-4 text-center">
-                                <svg class="w-6 h-6 mx-auto text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            </td>
-                            <td class="py-4 px-4 text-center">
-                                <svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </td>
-                            <td class="py-4 px-4 text-center">
-                                <svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- ======================================================= -->
-        <!-- БЛОК 5: Акордеон з Ключовими Перевагами (CSS-ХАК) (product-block-e) -->
-        <!-- ======================================================= -->
-        <section id="product-block-e" class="bg-indigo-50 p-6 sm:p-8 shadow-2xl rounded-2xl border border-indigo-200">
-            <h2 class="text-3xl font-extrabold text-center mb-8 text-indigo-900">
-                Детальний Розбір Ключових Переваг
-            </h2>
-
-            <div class="space-y-4 max-w-4xl mx-auto">
-
-                <!-- АККОРДЕОН ЕЛЕМЕНТ 1 -->
-                <div class="accordion-item bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-                    <input type="checkbox" id="toggle-1" class="accordion-toggle" hidden>
-                    
-                    <label for="toggle-1" class="accordion-header p-5 flex justify-between items-center text-indigo-800 font-semibold text-xl bg-white hover:bg-indigo-100">
-                        <span>1. Інтелектуальна Система Економії Енергії</span>
-                        <svg class="w-6 h-6 accordion-icon transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </label>
-                    
-                    <div class="accordion-content bg-white/80 px-5 text-gray-700 text-base border-t border-indigo-200">
-                        <p>Наш продукт оснащений AI-алгоритмом, який аналізує ваші звички використання і автоматично регулює потужність, заощаджуючи до 35% електроенергії без втрати продуктивності. Це робить його не тільки ефективним, але й екологічним рішенням.</p>
-                    </div>
-                </div>
-
-                <!-- АККОРДЕОН ЕЛЕМЕНТ 2 -->
-                <div class="accordion-item bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-                    <input type="checkbox" id="toggle-2" class="accordion-toggle" hidden>
-                    
-                    <label for="toggle-2" class="accordion-header p-5 flex justify-between items-center text-indigo-800 font-semibold text-xl bg-white hover:bg-indigo-100">
-                        <span>2. Модульна Архітектура для Легкого Оновлення</span>
-                        <svg class="w-6 h-6 accordion-icon transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </label>
-                    
-                    <div class="accordion-content bg-white/80 px-5 text-gray-700 text-base border-t border-indigo-200">
-                        <p>Ми розробили пристрій так, щоб ключові компоненти можна було замінити протягом 5 хвилин. Забудьте про викидання старого обладнання – просто оновіть потрібний модуль і продовжуйте користуватися найновішими технологіями.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================= -->
-        <!-- БЛОК 6: Візуалізація Матеріалів/Кольорів (Material Showcase) (product-block-g) -->
-        <!-- ======================================================= -->
-        <section id="product-block-g" class="bg-black p-6 sm:p-12 shadow-2xl rounded-2xl text-white">
-            <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-100">
-                Оберіть Свій Стиль та Матеріал
-            </h2>
-
-            <!-- Контейнер для Showcase: два великі стовпці з акцентом на зображення -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Колонка 1: Колір "Опівнічне Небо" -->
-                <div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]">
-                    <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Midnight+Sky+Edition" 
-                         alt="[Зображення видання 'Опівнічне Небо']" 
-                         class="w-full h-auto object-cover aspect-video">
-                    
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-sky-400 mb-2">Опівнічне Небо (Алюміній)</h3>
-                        <p class="text-gray-400 text-sm">
-                            Елегантний та стриманий темно-синій колір. Корпус з авіаційного алюмінію, анодованого для стійкості до подряпин. Ідеально підходить для професійного середовища.
-                        </p>
-                        <div class="mt-4 flex items-center space-x-2">
-                            <span class="inline-block w-6 h-6 rounded-full bg-slate-800 border-2 border-sky-400"></span>
-                            <span class="text-sm font-medium text-gray-300">В наявності</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Колонка 2: Колір "Сяюче Золото" -->
-                <div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]">
-                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Radiant+Gold+Edition" 
-                         alt="[Зображення видання 'Сяюче Золото']" 
-                         class="w-full h-auto object-cover aspect-video">
-                    
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Сяюче Золото (Композит)</h3>
-                        <p class="text-gray-400 text-sm">
-                            Розкішний золотий відтінок, створений з високоміцного полімерного композиту з матовим покриттям. Найкращий вибір для тих, хто цінує сміливість та індивідуальність.
-                        </p>
-                        <div class="mt-4 flex items-center space-x-2">
-                            <span class="inline-block w-6 h-6 rounded-full bg-yellow-600 border-2 border-yellow-300"></span>
-                            <span class="text-sm font-medium text-gray-300">Обмежена серія</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+            .e {
+              fill: #c3e4fa;
+            }
+          </style>
+        </defs>
+        <rect class="b" x="164.71961" y="159.73182" width="1165.53835" height="176.83195" rx="88.41589" ry="88.41589" />
+        <g>
+          <path class="b" d="M.92535,229.00389c.24797-.7527.64971-1.46546,1.24832-2.06423,2.04334-2.04334,5.35856-2.04512,7.40368,0,10.90465,10.90198,25.14228,17.5644,34.61864,16.21521,3.221-.4604,5.41366-1.82826,6.70331-4.1809,1.1901-2.17222,2.25754-5.6563-2.20155-10.81932-3.12945-3.62274-7.22592-5.96738-7.2668-5.99049-2.51352-1.4163-3.40854-4.60041-1.99802-7.11926,1.4123-2.52329,4.60575-3.42187,7.12548-2.00957,3.27077,1.83148,7.38568,4.93966,10.60712,8.93074,6.424,6.9555,14.5165,18.69484,11.22173,31.27754-14.60649,15.02989-31.44052,12.91288-49.74751,1.27076C-2.26055,241.22301-.84769,232.38359.92535,229.00389Z" />
+          <path class="b" d="M411.2704,344.08608c20.81129,2.47652,29.35285,17.13611,31.22166,38.75076,2.109,24.39214-5.5632,28.81835-9.3737,29.53916-.57516.21664-1.19432.33552-1.83448.33552-.2302,0-.46395-.01511-.69859-.04711-2.86637-.38218-4.87949-3.01569-4.49642-5.88117,2.03979-15.28286-1.30831-30.64216-8.14138-37.34991-2.32243-2.28065-4.74618-3.19256-7.39301-2.78727-9.72788,1.48251-7.62765,17.56885-7.60543,17.7315.40174,2.85659-1.58472,5.50165-4.44221,5.9105-2.86992.40618-5.51498-1.57939-5.92472-4.44043-.53172-3.71473-.56128-8.87797.65682-13.86612,1.62672-9.32726,6.04026-22.87419,18.03147-27.89544Z" />
+        </g>
+        <path class="e" d="M136.40495,285.55235c-15.43652,0-32.56641-2.95117-51.00391-10.64893-7.20312-3.00781-10.60547-11.28613-7.59766-18.49023,3.00781-7.20361,11.28418-10.60547,18.49023-7.59717,28.88379,12.05908,57.06152,11.31201,83.75098-2.22412,19.84863-10.06592,31.53027-23.76611,31.64258-23.90186,4.98242-6.00977,13.89258-6.8418,19.90332-1.85938,6.00879,4.98291,6.8418,13.89355,1.8584,19.90332-.61133.73779-15.27344,18.21777-40.61816,31.07129-14.16113,7.18164-33.4082,13.74707-56.42578,13.74707Z" />
+        <path class="e" d="M400.95671,339.09776c-7.57715,0-13.84863-6.00537-14.11719-13.6377-.46973-13.32324-6.47363-34.46045-32.41113-59.49707-16.54102-15.96484-33.24414-25.70654-33.41113-25.80322-6.75-3.90723-9.06738-12.54785-5.16895-19.30322,3.89844-6.75586,12.52441-9.07959,19.28418-5.19092,3.17285,1.82568,77.72852,45.44043,79.95898,108.79932.27539,7.80176-5.82715,14.34912-13.62891,14.62354-.16895.00635-.33789.00928-.50586.00928Z" />
+        <path class="d" d="M64.89664,236.41516l-9.86236,24.92106c-2.3715,5.99252.84128,12.73832,6.98853,14.67367l35.12402,9.56462c5.55314,1.7483,11.51354-1.09042,13.65584-6.50378l6.89551-17.42416c2.14231-5.41336-.26135-11.56211-5.50702-14.08737l-32.15717-17.06153c-5.80688-2.79543-12.76585-.07504-15.13736,5.91748Z" />
+        <path class="d" d="M400.02056,357.07933l25.7884-7.2996c6.20108-1.75526,9.60921-8.40451,7.41346-14.46364l-13.73253-33.71345c-1.98354-5.47353-7.85862-8.48485-13.46038-6.89923l-18.03058,5.10369c-5.60176,1.58562-9.02694,7.22945-7.84741,12.93056l5.97471,35.90936c1.30573,6.31106,7.69325,10.18757,13.89433,8.43231Z" />
+        <g>
+          <ellipse class="c" cx="276.32644" cy="245.75592" rx="75.23506" ry="58.06429" />
+          <path class="e" d="M276.32667,313.40869c-22.20459,0-43.17871-6.74902-59.05811-19.00391-16.61572-12.82324-25.76611-30.10059-25.76611-48.64844s9.15039-35.8252,25.76611-48.64941c15.87939-12.25488,36.85352-19.00391,59.05811-19.00391s43.17822,6.74902,59.05762,19.00391c16.61572,12.82422,25.76611,30.10156,25.76611,48.64941s-9.15039,35.8252-25.76611,48.64844c-15.87939,12.25488-36.85303,19.00391-59.05762,19.00391ZM276.32667,197.28076c-36.19775,0-65.64648,21.74609-65.64648,48.47559s29.44873,48.47461,65.64648,48.47461,65.646-21.74609,65.646-48.47461-29.44873-48.47559-65.646-48.47559Z" />
+        </g>
+        <g>
+          <rect class="b" x="118.91642" y="77.25083" width="316.48211" height="59.15832" rx="24.10922" ry="24.10922" />
+          <path class="e" d="M411.28907,145.48584H143.0254c-18.29883,0-33.18652-14.88672-33.18652-33.18555v-10.94043c0-18.2998,14.8877-33.18652,33.18652-33.18652h268.26367c18.2998,0,33.18652,14.88672,33.18652,33.18652v10.94043c0,18.29883-14.88672,33.18555-33.18652,33.18555ZM143.0254,86.32764c-8.28809,0-15.03125,6.74316-15.03125,15.03223v10.94043c0,8.28809,6.74316,15.03125,15.03125,15.03125h268.26367c8.28906,0,15.03223-6.74316,15.03223-15.03125v-10.94043c0-8.28906-6.74316-15.03223-15.03223-15.03223H143.0254Z" />
+        </g>
+        <g>
+          <path class="c" d="M143.51089,148.51985l12.40807-79.08367c3.62705-23.11727,23.52769-40.15168,46.90764-40.15168h148.00247c23.37994,0,43.28058,17.03442,46.90764,40.15168l12.40807,79.08367c4.52391,28.83344-17.74657,54.8971-46.90764,54.8971h-172.81861c-29.16107,0-51.43155-26.06366-46.90764-54.8971Z" />
+          <path class="e" d="M363.23731,213.00537h-172.81885c-16.69678,0-32.5-7.28027-43.35742-19.97363-10.86914-12.70801-15.61621-29.47363-13.02344-45.99805l9.47314,1.48633-9.47314-1.48633,12.4082-79.08398c4.38672-27.95996,28.09814-48.25391,56.38086-48.25391h148.00244c28.28223,0,51.99316,20.29395,56.38086,48.25391l12.40723,79.08398c2.59375,16.52441-2.15332,33.29004-13.02246,45.99805-10.85742,12.69336-26.66016,19.97363-43.35742,19.97363ZM202.82667,38.87354c-18.77734,0-34.521,13.47852-37.43457,32.04883l-12.4082,79.08398c-1.72266,10.97949,1.43066,22.11719,8.65137,30.55957,7.2085,8.42773,17.69971,13.26172,28.7832,13.26172h172.81885c11.08398,0,21.57422-4.83398,28.7832-13.26172,7.2207-8.44238,10.37402-19.58008,8.65137-30.55957l-12.4082-79.08398c-2.91406-18.57031-18.65723-32.04883-37.43457-32.04883h-148.00244Z" />
+        </g>
+        <rect class="b" x="258.78324" y="227.6464" width="32.40559" height="42.58918" rx="8.89732" ry="8.89732" transform="translate(523.92703 -26.04503) rotate(90)" />
+        <g>
+          <path class="b" d="M298.93423,136.34187c5.63313-1.00189,9.64592,5.76547,7.55428,11.09097-4.42903,11.27671-15.41256,19.26002-28.26069,19.26002s-23.83166-7.98331-28.26069-19.26002c-2.09164-5.3255,1.85808-11.62879,7.55428-11.09097,21.87971,2.0658,24.63463,2.9841,41.41282,0Z" />
+          <g>
+            <path class="b" d="M329.11672,85.95917l2.95065-7.95228,2.91585,7.90157c1.65689,4.48995,5.1964,8.02946,9.68634,9.68634l7.90157,2.91585-7.95228,2.95065c-4.46792,1.6578-7.99114,5.18102-9.64894,9.64894l-2.95065,7.95228-2.91585-7.90157c-1.65689-4.48995-5.1964-8.02946-9.68634-9.68634l-7.90157-2.91585,7.95228-2.95065c4.46792-1.6578,7.99114-5.18102,9.64894-9.64894Z" />
+            <path class="b" d="M221.48572,85.95917l2.95065-7.95228,2.91585,7.90157c1.65689,4.48995,5.1964,8.02946,9.68634,9.68634l7.90157,2.91585-7.95228,2.95065c-4.46792,1.6578-7.99114,5.18102-9.64894,9.64894l-2.95065,7.95228-2.91585-7.90157c-1.65689-4.48995-5.1964-8.02946-9.68634-9.68634l-7.90157-2.91585,7.95228-2.95065c4.46792-1.6578,7.99114-5.18102,9.64894-9.64894Z" />
+          </g>
+        </g>
+        <g>
+          <path class="e" d="M485.17815,217.83074c-3.91678-2.37895-8.90755-3.56936-14.9723-3.56936-3.62272,0-7.07552.69482-10.36056,2.08475-3.28516,1.38979-6.12796,3.60098-8.52853,6.63329v-6.8228l-20.72124,5.12016v54.36469l20.72124,4.95301v-34.36682c0-2.61095.52607-4.90595,1.57932-6.88603,1.05223-1.97919,2.51611-3.52689,4.39061-4.64334,1.8735-1.11545,4.07469-1.67412,6.60169-1.67412,3.95825,0,6.95909,1.11634,9.00238,3.34825,2.04228,2.23279,3.06402,5.28584,3.06402,9.16029v35.06178h20.72112v-41.56878c0-4.21096-.9377-8.20184-2.8112-11.97146-1.8745-3.76887-4.76966-6.84365-8.68655-9.22349Z" />
+          <path class="e" d="M562.69257,218.90473c-5.39153-3.09565-11.60333-4.64334-18.63649-4.64334-5.2651,0-10.08709.91594-14.46686,2.74811-4.38077,1.83201-8.17124,4.33827-11.37146,7.51774-3.20109,3.18036-5.67584,6.8228-7.42294,10.9291-1.74819,4.10643-2.6218,8.41311-2.6218,12.91916,0,6.19118,1.52608,11.87677,4.58014,17.05719,3.05316,5.18026,7.27501,9.31818,12.66654,12.41369,5.39055,3.09553,11.60232,4.64323,18.63637,4.64323,5.26421,0,10.08623-.92683,14.46697-2.7796,4.37976-1.85277,8.17026-4.35901,11.37146-7.51774,3.20009-3.15873,5.66399-6.7912,7.39134-10.89761,1.72646-4.10629,2.5902-8.41199,2.5902-12.91916,0-6.19104-1.51621-11.87677-4.54854-17.05705-3.03242-5.18028-7.24441-9.31818-12.63493-12.41371ZM557.57549,257.03044c-1.34843,2.44304-3.2012,4.32741-5.55942,5.65413-2.35908,1.32656-5.0125,1.98992-7.95999,1.98992-2.94837,0-5.60177-.66336-7.95988-1.98992-2.35922-1.32672-4.22285-3.21109-5.59102-5.65413-1.36908-2.44204-2.05315-5.32744-2.05315-8.65495,0-3.32651.6732-6.2118,2.02166-8.65484,1.34732-2.44215,3.20009-4.32741,5.5593-5.65411,2.35822-1.32672,5.03223-1.99006,8.02308-1.99006,2.98995,0,5.66399.66334,8.02319,1.99006,2.35822,1.3267,4.20112,3.21196,5.52784,5.65411,1.32656,2.44304,1.98992,5.32833,1.98992,8.65484,0,3.32751-.67423,6.21291-2.02155,8.65495Z" />
+          <polygon class="e" points="657.00363 256.77771 645.44266 216.15662 626.36406 216.15662 614.36086 256.77771 603.9371 216.15662 583.9108 216.15662 603.17905 280.59447 623.77386 280.59447 635.52435 241.48949 646.70616 280.59447 667.30108 280.59447 686.56919 216.15662 667.30108 216.15662 657.00363 256.77771" />
+          <path class="e" d="M752.81306,225.60111c-2.88529-3.55851-6.5386-6.33809-10.96095-8.33901-4.42184-1.99981-9.45533-3.00071-15.0985-3.00071-5.13893,0-9.84534.83212-14.11955,2.49537-4.27507,1.66426-7.99145,4.01161-11.15023,7.04392-3.15869,3.03245-5.60175,6.63329-7.32823,10.80279-1.72744,4.16952-2.5902,8.7398-2.5902,13.70894,0,6.86527,1.48461,12.85593,4.45383,17.97313,2.96927,5.11708,7.13872,9.09706,12.50853,11.93986,5.36982,2.84293,11.5926,4.26421,18.66811,4.26421,3.20006,0,6.55906-.34729,10.07645-1.04225,3.51593-.69496,6.8434-1.64252,9.98154-2.8428,3.13663-1.20041,5.69562-2.5586,7.6754-4.07483l-6.50712-14.02472c-3.11713,2.06401-6.38017,3.59109-9.79166,4.58012-3.4114.99017-7.01227,1.48461-10.80288,1.48461-3.41149,0-6.4024-.53691-8.97077-1.6109-2.56946-1.07399-4.59099-2.5586-6.06475-4.45383-1.47477-1.89526-2.23291-4.10629-2.27428-6.63329h48.39163c1.01085-5.64326.96838-10.87588-.12645-15.69887-1.09584-4.82199-3.08564-9.01224-5.96993-12.57173ZM711.78133,239.91017c.33656-3.24267,1.82117-5.83275,4.45374-7.77048,2.63166-1.9367,5.94829-2.906,9.95005-2.906,3.9582,0,7.09611.9693,9.41273,2.906,2.31611,1.93773,3.51639,4.52781,3.60132,7.77048h-27.41784Z" />
+          <path class="e" d="M791.13763,261.32625c-2.527-2.18932-5.53869-3.28504-9.03407-3.28504-2.31661,0-4.4536.50545-6.4122,1.51623-1.95832,1.01076-3.52792,2.42228-4.70645,4.23258-1.17954,1.81142-1.7689,3.98001-1.7689,6.50698,0,3.74903,1.28421,6.71825,3.85367,8.90769,2.56846,2.18932,5.5802,3.28491,9.03388,3.28491,2.31584,0,4.44303-.49545,6.38062-1.48447,1.93686-.98905,3.49543-2.38984,4.67497-4.20112,1.17854-1.8103,1.76899-3.98001,1.76899-6.507,0-3.79047-1.26352-6.78031-3.79052-8.97075Z" />
+          <path class="e" d="M1099.85434,260.09114c-2.527-2.18932-5.53869-3.28504-9.03407-3.28504-2.31661,0-4.4536.50545-6.4122,1.51623-1.95832,1.01076-3.52792,2.42228-4.70645,4.23258-1.17954,1.81142-1.7689,3.98001-1.7689,6.50698,0,3.74903,1.28421,6.71825,3.85367,8.90769,2.56846,2.18932,5.5802,3.28491,9.03388,3.28491,2.31584,0,4.44303-.49545,6.38062-1.48447,1.93686-.98905,3.49543-2.38984,4.67497-4.20112,1.17854-1.8103,1.76899-3.98001,1.76899-6.507,0-3.79047-1.26352-6.78031-3.79052-8.97075Z" />
+          <path class="e" d="M1160.66583,251.59745c0,2.40055-.47371,4.50705-1.42136,6.31747-.9477,1.81128-2.29588,3.23269-4.04309,4.26421-1.74821,1.0325-3.78077,1.54781-6.09638,1.54781-3.58009,0-6.30744-1.03149-8.18106-3.09551-1.87443-2.06315-2.81138-4.86448-2.81138-8.40224v-36.07256h-20.72112v39.1681c0,5.39153.93672,10.11883,2.81138,14.18263,1.87334,4.06494,4.72714,7.2443,8.56008,9.53931,3.83198,2.29499,8.67559,3.44293,14.5301,3.44293,5.09541,0,9.22349-.87447,12.38208-2.62168,3.15887-1.74708,5.76957-3.77949,7.83356-6.09622v6.82278h17.87858v-64.43785h-20.7214v35.44083Z" />
+          <path class="e" d="M1246.83386,216.15662v7.45953c-1.64824-2.11849-3.70973-3.9433-6.19107-5.46958-4.21196-2.59008-9.30842-3.88518-15.28838-3.88518-4.54847,0-8.77124.81138-12.66638,2.43217-3.89596,1.62177-7.27592,3.92765-10.13947,6.9176-2.86455,2.99096-5.08548,6.58096-6.66473,10.77119-1.57962,4.19125-2.36911,8.85533-2.36911,13.99314,0,6.82292,1.3897,12.80371,4.1695,17.94153,2.77962,5.13893,6.55911,9.11891,11.3397,11.94,4.77968,2.82118,10.22345,4.23258,16.33049,4.23258,5.97995,0,11.07641-1.29496,15.28838-3.88505,2.48134-1.52628,4.54282-3.35834,6.19107-5.49146v7.48138l17.8151-4.95301v-54.36469l-17.8151-5.12016ZM1242.09569,257.03044c-1.34818,2.44304-3.16958,4.32741-5.4645,5.65413-2.29611,1.32656-4.87532,1.98992-7.73888,1.98992-2.86451,0-5.43302-.66336-7.70734-1.98992-2.27415-1.32672-4.08561-3.21109-5.43302-5.65413-1.34823-2.44204-2.02157-5.32744-2.02157-8.65495,0-3.32651.67334-6.2118,2.02157-8.65484,1.34741-2.44215,3.15887-4.32741,5.43302-5.65411,2.27433-1.32672,4.84284-1.99006,7.70734-1.99006,2.86355,0,5.44277.66334,7.73888,1.99006,2.29492,1.3267,4.11632,3.21196,5.4645,5.65411,1.34745,2.44304,2.02157,5.32833,2.02157,8.65484,0,3.32751-.67411,6.21291-2.02157,8.65495Z" />
+          <g>
+            <path class="e" d="M840.16753,282.5329c-6.81723,0-12.90938-1.48255-18.27397-4.45014-5.36707-2.96759-9.60542-7.02653-12.72002-12.18181s-4.6719-10.97335-4.6719-17.4542c0-4.8812.91694-9.38366,2.74583-13.50739,1.83138-4.12373,4.39781-7.73417,7.70178-10.82634,3.30397-3.09217,7.17354-5.49166,11.61371-7.19597,4.44017-1.70431,9.24911-2.55646,14.42432-2.55646,4.8812,0,9.40608.66279,13.57217,1.98836s7.91108,3.31393,11.23498,5.96508l-9.08964,15.40106c-2.06311-1.89368-4.32306-3.29151-6.78484-4.19599s-5.04066-1.35796-7.73417-1.35796c-3.5332,0-6.58551.64285-9.15193,1.92607s-4.53485,3.13453-5.90279,5.55395c-1.36793,2.42067-2.05065,5.33468-2.05065,8.7433,0,5.1341,1.52491,9.14197,4.57721,12.02484,3.04981,2.88287,7.24829,4.32306,12.59294,4.32306,3.02988,0,5.88036-.55814,8.55144-1.67192,2.67357-1.11503,5.12289-2.74583,7.35543-4.89366l8.39446,15.65521c-3.62041,2.6935-7.7541,4.81891-12.40357,6.3762-4.64947,1.55481-9.3114,2.3347-13.98081,2.3347Z" />
+            <path class="e" d="M908.0234,282.5329c-7.02902,0-13.23579-1.54733-18.6228-4.6395s-9.60542-7.22836-12.65523-12.40357c-3.05231-5.17522-4.57721-10.85624-4.57721-17.04308,0-4.50246.87458-8.80559,2.62125-12.90938,1.74417-4.1013,4.21841-7.74164,7.41523-10.91853,3.19931-3.17689,6.98667-5.68103,11.36205-7.51241,4.37788-1.83138,9.19429-2.74583,14.45672-2.74583,7.02653,0,13.2333,1.54733,18.62031,4.6395s9.59545,7.22836,12.62533,12.40357,4.54482,10.85624,4.54482,17.04308c0,4.50371-.86461,8.80559-2.58885,12.90938-1.72673,4.1013-4.18851,7.73168-7.38533,10.88863-3.19931,3.15446-6.98667,5.6586-11.36205,7.50992-4.37788,1.85132-9.19429,2.77822-14.45422,2.77822ZM908.0234,264.73235c2.94516,0,5.59631-.66279,7.95344-1.98836,2.35464-1.32557,4.20595-3.20928,5.55395-5.64863,1.34551-2.4406,2.02075-5.32472,2.02075-8.64861s-.66279-6.20677-1.98836-8.64861c-1.32557-2.43935-3.16692-4.32306-5.52405-5.64863-2.35713-1.32557-5.02821-1.98836-8.01573-1.98836-2.99001,0-5.66109.66279-8.01822,1.98836s-4.20844,3.20928-5.55395,5.64863c-1.348,2.44184-2.02075,5.32472-2.02075,8.64861s.68521,6.20802,2.05314,8.64861c1.36544,2.43935,3.22921,4.32306,5.58634,5.64863,2.35464,1.32557,5.00578,1.98836,7.95344,1.98836Z" />
+            <path class="e" d="M955.9309,280.63922v-64.38496h20.70584v7.95344c1.55481-2.18769,3.38619-4.00911,5.49166-5.45927,2.10298-1.45265,4.35545-2.54649,6.75245-3.28403,2.39949-.73505,4.81891-1.10381,7.26075-1.10381,4.71176,0,8.78317,1.06395,12.21421,3.18686,3.42855,2.1254,5.77571,4.97837,7.0365,8.55393,2.52656-4.08137,5.91275-7.05892,10.16355-8.93267,4.2508-1.87125,8.7732-2.80812,13.57217-2.80812,6.2267,0,11.13033,1.18978,14.70588,3.56559,3.57805,2.37955,6.11209,5.45179,7.60709,9.21672,1.49252,3.76742,2.24002,7.7541,2.24002,11.96255v41.53378h-20.70335v-35.6011c0-3.57556-.94684-6.45843-2.84051-8.64861-1.89368-2.18645-4.64947-3.28154-8.26988-3.28154-2.27241,0-4.29067.48339-6.05976,1.45265-1.7666.96802-3.1445,2.26244-4.13369,3.88203s-1.48255,3.43852-1.48255,5.45927v36.7373h-20.70584v-35.6011c0-3.57556-.9568-6.45843-2.87041-8.64861-1.9161-2.18645-4.66193-3.28154-8.23749-3.28154-2.31477,0-4.35545.48339-6.12454,1.45265-1.7666.96802-3.1445,2.26244-4.13369,3.88203-.9892,1.61959-1.48255,3.43852-1.48255,5.45927v36.7373h-20.70584Z" />
+          </g>
+        </g>
+        <g>
+          <rect class="b" x="240.11591" y="9.07799" width="75.93929" height="37.81471" rx="18.90734" ry="18.90734" />
+          <path class="e" d="M297.14796,55.97021h-38.12451c-15.43115,0-27.98535-12.55371-27.98535-27.98438,0-15.43164,12.5542-27.98584,27.98535-27.98584h38.12451c15.43066,0,27.98486,12.5542,27.98486,27.98486,0,15.43164-12.5542,27.98535-27.98486,27.98535ZM259.02345,18.15479c-5.42041,0-9.83008,4.41016-9.83008,9.83008,0,5.4209,4.40967,9.83105,9.83008,9.83105h38.12451c5.41992,0,9.82959-4.41016,9.82959-9.83008,0-5.4209-4.40967-9.83105-9.82959-9.83105h-38.12451Z" />
+        </g>
+      </svg>
     </div>
+  </header>
+  <main id="components-container" class="space-y-12 max-w-7xl-custom mx-auto"></main>
 
+  <script>
+    const componentsData = [{
+        description: "Якась інформація",
+        htmlCode: '<section id="product-block-b" class="bg-gray-800 p-6 shadow-xl rounded-2xl text-white"><div class="relative w-full min-h-[550px] overflow-hidden rounded-xl shadow-2xl"><!-- Фон-зображення --><img src="https://placehold.co/1200x600/1f2937/9ca3af?text=Product+Details+Environment" alt="[Зображення середовища деталей продукту]" class="w-full h-full object-cover opacity-30 absolute inset-0"><!-- Контейнер для вмісту поверх зображення --><div class="relative p-4 sm:p-8 flex flex-col items-center justify-start"><!-- Заголовок поверх фото --><h2 class="text-4xl font-black text-center mb-10 mt-4 tracking-tight">Експертні Функції та Характеристики</h2><!-- Головний контейнер з колонками: 4x Grid, де 2 і 3 колонка пусті на десктопі --><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 w-full max-w-6xl mt-6"><!-- ЛІВА КОЛОНКА (25% ширини) --><div class="col-span-1 flex flex-col space-y-8"><!-- Пункт 1 --><div class="flex flex-col items-center text-center space-y-2 px-2"><svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-xl font-semibold">Надшвидка Активація</p><p class="text-gray-300 text-sm">Система готова до роботи менш ніж за 5 секунд, що дозволяє миттєво розпочати роботу.</p></div><!-- Пункт 2 --><div class="flex flex-col items-center text-center space-y-2 px-2"><svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.995 8.995 0 0112 21c-2.457 0-4.757-.79-6.618-2.146M15.5 5A8.995 8.995 0 0012 3C9.543 3 7.243 3.79 5.382 5.146M4 12H1v6a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-6h-3"></path></svg><p class="text-xl font-semibold">Адаптивний Дизайн</p><p class="text-gray-300 text-sm">Бездоганний вигляд на будь-якому екрані, від смартфона до великого монітора.</p></div></div><!-- Дві порожні колонки (на lg екранах) - Центр. На мобільних цей простір займеться елементами --><div class="lg:col-span-2 hidden lg:block"><!-- Тут буде видно фонове зображення --></div><!-- ПРАВА КОЛОНКА (25% ширини) --><div class="col-span-1 flex flex-col space-y-8"><!-- Пункт 3 (На мобільних він піде під Пункт 2) --><div class="flex flex-col items-center text-center space-y-2 px-2"><svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg><p class="text-xl font-semibold">Енергоефективність</p><p class="text-gray-300 text-sm">Зменшення споживання енергії до 40% завдяки оптимізованим мікросхемам.</p></div><!-- Пункт 4 --><div class="flex flex-col items-center text-center space-y-2 px-2"><svg class="w-10 h-10 flex-shrink-0 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg><p class="text-xl font-semibold">Безшумна Робота</p><p class="text-gray-300 text-sm">Інноваційна система пасивного охолодження гарантує відсутність шуму.</p></div></div><!-- Додаткові пункти для мобільних (вони займуть 2x2 сітку на мобільних) --><div class="col-span-2 lg:col-span-1 lg:hidden"><!-- Пункт 5 (ЛІВА) --><div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0"><svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2a3 3 0 000-4zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-xl font-semibold">Цілодобова Підтримка</p><p class="text-gray-300 text-sm">Миттєвий доступ до експертів 24/7/365.</p></div></div><div class="col-span-2 lg:col-span-1 lg:hidden"><!-- Пункт 6 (ПРАВА) --><div class="flex flex-col items-center text-center space-y-2 px-2 mt-8 lg:mt-0"><svg class="w-10 h-10 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3a8 8 0 00-7.237 4.774M21 12c0 1.372-.638 2.87-1.898 4.025M12 21a9 9 0 010-18m0 18a9 9 0 000-18m0 18a9 9 0 01-9-9m9 9a9 9 0 01-9-9m9 9h3a8 8 0 007.237-4.774M12 3c-1.372 0-2.87.638-4.025 1.898"></path></svg><p class="text-xl font-semibold">Глобальна Сумісність</p><p class="text-gray-300 text-sm">Повна інтеграція та сумісність з усіма стандартами.</p></div></div></div></div></section>'
+      },
+      {
+        description: "Якась інформація",
+        htmlCode: '<section id="product-block-a" class="bg-white p-6 shadow-xl rounded-2xl border border-gray-100"><h2 class="text-3xl font-extrabold text-center mb-6 text-gray-900">Максимум Деталей у Кожному Пікселі</h2><div class="relative w-full h-auto overflow-hidden rounded-xl shadow-lg"><!-- Зображення під текстом --><img src="https://placehold.co/1200x500/818cf8/ffffff?text=Product+Hero+Shot" alt="[Зображення головного кадру продукту]" class="w-full h-full object-cover"><!-- Накладений текст (absolute) --><div class="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 bg-black/60 p-3 sm:p-4 rounded-lg"><p class="text-xl sm:text-3xl font-bold text-white tracking-wider">Надзвичайна <span class="text-yellow-300">Яскравість</span></p><p class="text-sm text-gray-300 mt-1">Інноваційна технологія покриття для глибоких кольорів.</p></div></div><p class="mt-4 text-center text-gray-600 italic">Це зображення ілюструє якість матеріалів, використаних у виробництві.</p></section>'
+      },
+      {
+        description: "Якась інформація",
+        htmlCode: '<section id="product-block-c" class="bg-slate-50 p-6 shadow-xl rounded-2xl border border-slate-100"><h2 class="text-3xl font-extrabold text-center mb-10 text-slate-800">Створюйте Власні Сценарії Використання</h2><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"><!-- Елемент Зображення 1 --><div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group"><img src="https://placehold.co/400x600/22c55e/ffffff?text=Scene+1" alt="[Зображення Сцени 1]" class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300"><div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60"><p class="text-lg font-semibold text-white">Етап 1: <span class="text-lime-300">Аналіз</span></p><p class="text-xs text-gray-200 mt-1 hidden sm:block">Збір та обробка первинних даних.</p></div></div><!-- Елемент Зображення 2 --><div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group"><img src="https://placehold.co/400x600/ef4444/ffffff?text=Scene+2" alt="[Зображення Сцени 2]" class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300"><div class="absolute inset-x-0 bottom-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60"><p class="text-lg font-semibold text-white">Етап 2: <span class="text-red-300">Виконання</span></p><p class="text-xs text-gray-200 mt-1 hidden sm:block">Запуск алгоритмів та процесів.</p></div></div><!-- Елемент Зображення 3 --><div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group"><img src="https://placehold.co/400x600/3b82f6/ffffff?text=Scene+3" alt="[Зображення Сцени 3]" class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300"><div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60"><p class="text-lg font-semibold text-white">Етап 3: <span class="text-sky-300">Перевірка</span></p><p class="text-xs text-gray-200 mt-1 hidden sm:block">Контроль якості та валідація результатів.</p></div></div><!-- Елемент Зображення 4 --><div class="relative overflow-hidden rounded-xl shadow-md transition-shadow hover:shadow-xl group sm:col-span-1 hidden lg:block"><img src="https://placehold.co/400x600/f97316/ffffff?text=Scene+4" alt="[Зображення Сцени 4]" class="w-full h-full object-cover aspect-[2/3] transform group-hover:scale-105 transition duration-300"><div class="absolute inset-x-0 top-0 bg-black/40 p-3 sm:p-4 transition duration-300 group-hover:bg-black/60"><p class="text-lg font-semibold text-white">Етап 4: <span class="text-orange-300">Фінал</span></p><p class="text-xs text-gray-200 mt-1 hidden sm:block">Експорт та інтеграція готового продукту.</p></div></div></div></section>'
+      },
+      {
+        description: "Якась інформація",
+        htmlCode: '<section id="product-block-d" class="bg-gray-900 p-6 shadow-xl rounded-2xl text-white w-full"><h2 class="text-3xl font-extrabold text-center mb-8 text-white">Порівняння: Наш Продукт vs. Конкуренти</h2><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-700 rounded-xl"><thead class="bg-gray-800"><tr><th class="py-3 px-4 text-left text-sm font-medium text-gray-400">Характеристика</th><th class="py-3 px-4 text-center text-sm font-medium text-purple-400">Наш Продукт</th><th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент А</th><th class="py-3 px-4 text-center text-sm font-medium text-gray-400">Конкурент Б</th></tr></thead><tbody class="divide-y divide-gray-700"><!-- Рядок 1 (Світлий) --><tr class="bg-gray-700/50"><td class="py-4 px-4 font-medium text-gray-200">Матеріал Корпусу</td><td class="py-4 px-4 text-center"><span class="text-green-400 font-bold">Алюміній</span></td><td class="py-4 px-4 text-center">Пластик</td><td class="py-4 px-4 text-center">Композит</td></tr><!-- Рядок 2 (Темний) --><tr class="bg-gray-700"><td class="py-4 px-4 font-medium text-gray-200">Автономність (годин)</td><td class="py-4 px-4 text-center"><span class="text-purple-400 font-bold">18+</span></td><td class="py-4 px-4 text-center">12</td><td class="py-4 px-4 text-center">15</td></tr><!-- Рядок 3 (Світлий) --><tr class="bg-gray-700/50"><td class="py-4 px-4 font-medium text-gray-200">Водонепроникність (IP)</td><td class="py-4 px-4 text-center"><svg class="w-6 h-6 mx-auto text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></td><td class="py-4 px-4 text-center"><svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></td><td class="py-4 px-4 text-center"><svg class="w-6 h-6 mx-auto text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></td></tr></tbody></table></div></section>'
+      },
+      {
+        description: "Якась інформація",
+        htmlCode: '<section id="product-block-g" class="bg-black p-6 sm:p-12 shadow-2xl rounded-2xl text-white"><h2 class="text-3xl font-extrabold text-center mb-12 text-gray-100">Оберіть Свій Стиль та Матеріал</h2><!-- Контейнер для Showcase: два великі стовпці з акцентом на зображення --><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Колонка 1: Колір "Опівнічне Небо" --><div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]"><img src="https://placehold.co/600x400/1e293b/94a3b8?text=Midnight+Sky+Edition" alt="[Зображення видання \'Опівнічне Небо\']" class="w-full h-auto object-cover aspect-video"><div class="p-6"><h3 class="text-2xl font-bold text-sky-400 mb-2">Опівнічне Небо (Алюміній)</h3><p class="text-gray-400 text-sm">Елегантний та стриманий темно-синій колір. Корпус з авіаційного алюмінію, анодованого для стійкості до подряпин. Ідеально підходить для професійного середовища.</p><div class="mt-4 flex items-center space-x-2"><span class="inline-block w-6 h-6 rounded-full bg-slate-800 border-2 border-sky-400"></span><span class="text-sm font-medium text-gray-300">В наявності</span></div></div></div><!-- Колонка 2: Колір "Сяюче Золото" --><div class="flex flex-col rounded-xl overflow-hidden shadow-2xl bg-gray-900 transition-transform duration-300 hover:scale-[1.02]"><img src="https://placehold.co/600x400/f59e0b/ffffff?text=Radiant+Gold+Edition" alt="[Зображення видання \'Сяюче Золото\']" class="w-full h-auto object-cover aspect-video"><div class="p-6"><h3 class="text-2xl font-bold text-yellow-300 mb-2">Сяюче Золото (Композит)</h3><p class="text-gray-400 text-sm">Розкішний золотий відтінок, створений з високоміцного полімерного композиту з матовим покриттям. Найкращий вибір для тих, хто цінує сміливість та індивідуальність.</p><div class="mt-4 flex items-center space-x-2"><span class="inline-block w-6 h-6 rounded-full bg-yellow-600 border-2 border-yellow-300"></span><span class="text-sm font-medium text-gray-300">Обмежена серія</span></div></div></div></div></section>'
+      }
+    ];
+    function updateVisual(rowNumber) {
+      const editor = document.getElementById(`code-editor-${rowNumber}`);
+      const visual = document.getElementById(`visual-${rowNumber}`);
+      visual.innerHTML = editor.value;
+    }
+    const container = document.getElementById('components-container');
+    componentsData.forEach((component, index) => {
+      const rowNumber = index + 1;
+      const rowHtml = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 bg-white rounded-3xl shadow-xl transition hover:shadow-2xl border border-gray-200 lg:items-stretch">
+                    
+                    <!-- Рядок N -->
+                    <div class="lg:col-span-12 mb-4 border-b pb-2">
+                        <span class="row-number text-2xl">Рядок ${rowNumber}</span>
+                    </div>
+
+                    <!-- 1. Опис (Description) - col-span-2 -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Опис</h3>
+                        <p class="text-gray-600">${component.description}</p>
+                    </div>
+
+                    <!-- 2. Відображення / Візуал (Visual) - col-span-8 -->
+                    <!-- Цей блок буде визначати висоту рядка -->
+                    <div class="lg:col-span-8 flex items-center justify-center p-4 border border-indigo-200 bg-indigo-50 rounded-lg min-h-[250px] transition duration-300">
+                        <div id="visual-${rowNumber}" class="visual-output w-full flex justify-center">
+                            <!-- Початкове відображення компонента -->
+                            ${component.htmlCode}
+                        </div>
+                    </div>
+
+                    <!-- 3. Код HTML/CSS (Live Editor) - col-span-2 -->
+                    <!-- Клас h-full тут критичний: він змушує контейнер коду зайняти всю доступну висоту, визначену візуальним блоком. -->
+                    <div class="lg:col-span-2 flex flex-col h-full"> 
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Код HTML/CSS (Live Editor)</h3>
+                        <!-- Використовуємо h-full для textarea і overflow-y-auto для прокрутки, якщо код задовгий -->
+                        <textarea 
+                            id="code-editor-${rowNumber}" 
+                            class="w-full h-full min-h-[200px] font-mono text-sm p-3 bg-gray-900 text-green-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-y-auto"
+                            oninput="updateVisual(${rowNumber})"
+                        >${component.htmlCode}</textarea>
+                    </div>
+                </div>
+            `;
+      container.insertAdjacentHTML('beforeend', rowHtml);
+      updateVisual(rowNumber);
+    });
+    window.onload = function() {
+      componentsData.forEach((_, index) => {
+        const rowNumber = index + 1;
+        updateVisual(rowNumber);
+      });
+    };
+  </script>
 </body>
+
 </html>
